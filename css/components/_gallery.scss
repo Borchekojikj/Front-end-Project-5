@@ -1,0 +1,92 @@
+@use "../abstracts/mixins" as mix;
+@use "../abstracts/variables" as var;
+@use 'sass:math';
+
+
+.gallery {
+    @extend %section;
+    @extend %wrap;
+    text-align: center;
+    .flex-container {
+        @include mix.tablet-styles {
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+        display: flex;
+        margin-bottom: var.$gutter-base;
+        margin-top: var.$gutter-base * 2;
+        margin-right: -(var.$gutter-base);
+        flex-wrap: wrap;
+
+        &:not(.reversed) {
+
+            .flex-item-40 {
+                @include mix.tablet-styles {
+                    flex-basis: 100%;
+                }
+                flex-basis: 40%;
+                .inner {
+                    @include mix.background-img("../images/coast.jpg");
+                }
+            }
+            .flex-item-60 {
+                @include mix.tablet-styles {
+                    flex-basis: 100%;
+                }
+                flex-basis: 60%;
+                .inner {
+                    @include mix.background-img("../images/island.jpg");
+                }
+            }
+        }
+        &.reversed {
+            .flex-item-40 {
+                @include mix.tablet-styles {
+                    flex-basis: 100%;
+                }
+                flex-basis: 40%;
+                .inner {
+                    @include mix.background-img("../images/mountain.jpg");
+                }
+            }
+            .flex-item-60 {
+                @include mix.tablet-styles {
+                    flex-basis: 100%;
+                }
+                flex-basis: 60%;
+                .inner {
+                    @include mix.background-img("../images/balloon.jpg");
+                }
+    
+                // background-image: url(/images/balloon.jpg);
+            }
+        }
+        .inner {
+            @include mix.tablet-styles {
+                margin-bottom: var.$gutter-base;
+            }
+            margin-right: var.$gutter-base;
+            height: var.$gutter-base * 8;
+
+        }
+    }
+    .gallery-text {
+        @include mix.tablet-styles {
+            width: 90%;
+            line-height: var.$gutter-base;
+        }
+        width: 40%;
+        margin: 0 auto;
+        color: var.$text-color-gray;
+        .border-line {
+            @include mix.tablet-styles {
+                margin-bottom: var.$gutter-base;
+            }
+            display: inline-block;
+            width: 15%;
+            margin: 0 auto;
+            border: 1px solid var.$background-color-blue;
+            margin-top: math.div(var.$gutter-base, 2);
+        }
+    }
+}

@@ -1,0 +1,115 @@
+@use "../abstracts/mixins" as mix;
+@use "../abstracts/variables" as var;
+@use 'sass:math';
+
+.features {
+    @extend %section;
+    background-color: var.$background-color-gray;
+
+    .wrapper {
+        @extend %wrap;
+        text-align: center;
+        .features-text {
+            @include mix.tablet-styles {
+                width: 90%;
+                line-height: var.$gutter-base;
+            }
+            width: 40%;
+            margin: 0 auto;
+            color: var.$text-color-gray;
+            .border-line {
+                display: inline-block;
+                width: 15%;
+                margin: 0 auto;
+                border: 1px solid var.$background-color-blue;
+                margin-top: math.div(var.$gutter-base, 2);
+            }
+        }  
+    
+        .flex-container {
+            display: flex;
+            margin-top: var.$gutter-base;
+            flex-wrap: wrap;
+            .flex-item{
+                @include mix.tablet-styles {
+                    flex-basis: 100%;
+                }
+                flex-basis: 33.33%;
+                .inner {
+                    @include mix.tablet-styles {
+                        width: 60%;
+                        margin: 0 auto;
+                        line-height: var.$gutter-base;
+                    }
+                    padding: var.$gutter-base;
+                    color:  var.$text-color-gray;
+                    .fa-solid {
+                        color: var.$background-color-blue;
+                        font-size: var.$gutter-base * 1.5;
+                        margin-bottom: math.div(var.$gutter-base, 2);
+                    }
+                }
+            }
+        }  
+
+        .form-section {
+            padding-top: var.$gutter-base * 3;
+            .form-text {
+                @include mix.tablet-styles {
+                    width: 90%;
+                    line-height: var.$gutter-base;
+                }
+                width: 40%;
+                margin: 0 auto;
+                color: var.$text-color-gray;
+                .border-line {
+                    display: inline-block;
+                    width: 15%;
+                    margin: 0 auto;
+                    border: 1px solid var.$background-color-blue;
+                    margin-top: math.div(var.$gutter-base, 2);
+                }
+            }  
+            form {
+                @include mix.tablet-styles {
+                    width: 80%;
+                }
+                display: flex;
+                flex-wrap: wrap;
+                width: 50%;
+                margin: 0 auto;
+                margin-top: var.$gutter-base;
+                .flex-item {
+                    &:not(.button) {
+                        @include mix.tablet-styles {
+                            flex-basis: 100%;
+                        }
+                        flex-grow: 1;
+
+                    }
+                input {
+                    @include mix.tablet-styles {
+                        width: 100%;
+                    }
+                    padding: math.div(var.$gutter-base, 2);
+                    width: 90%;
+                    border: 2px solid darkgray;      
+                    &:focus {
+                        outline: none;
+                    } 
+                }
+                }
+                .button {
+                    @include mix.tablet-styles {
+                        margin: math.div(var.$gutter-base, 2) auto;
+                    }
+                    @extend %button;
+                    border: none;
+       
+                }
+  
+            }
+        }
+    }
+
+}

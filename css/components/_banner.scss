@@ -1,0 +1,74 @@
+@use "../abstracts/mixins" as mix;
+@use "../abstracts/variables" as var;
+@use 'sass:math';
+
+
+.banner{
+    background-image: url(../images/hero.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+
+    .background-dim {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: #2e3135;
+        opacity: 0.6;
+      }
+
+    nav {
+        @include mix.mobile-l-styles {
+            justify-content: center;
+        }
+        @extend %wrap;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: baseline;
+        height: 5%;
+        position: relative;
+        & > a {
+            font-size: var.$font-size-big;
+        }
+        a{
+            padding: math.div(var.$gutter-base, 4);
+            color: var.$text-color-white;
+        }
+        ul {
+            display: flex;
+            padding-left: 0;
+            li {
+                padding: math.div(var.$gutter-base, 4);
+                &:not(:last-child){
+                    margin-right: math.div(var.$gutter-base, 4);
+                }
+            }
+        }
+    }
+
+    .banner-content {
+        @extend %wrap;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 95%;
+        position: relative;
+        .inner {
+            text-align: center;
+            color: var.$text-color-white;
+            p {
+                font-size: var.$font-size-big * 1.5;
+            }
+            .button {
+                @extend %button;
+                margin-top: math.div(var.$gutter-base, 2);
+            }
+        }
+    }
+
+}
